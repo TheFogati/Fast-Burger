@@ -17,8 +17,8 @@ public class PattyScript : MonoBehaviour
     float sideOneTimer;
     float sideTwoTimer;
 
-    float upSideValue;
-    float downSideValue;
+    public float upSideValue;
+    public float downSideValue;
 
     int pontoOne;
     int pontoTwo;
@@ -128,5 +128,10 @@ public class PattyScript : MonoBehaviour
             if(endTouch.y > startTouch.y)
                 sideOneCooking = !sideOneCooking;
         }
+
+        //PC Testing
+        if(Input.GetKeyDown(KeyCode.F))
+            sideOneCooking = !sideOneCooking;
+
     }
 }

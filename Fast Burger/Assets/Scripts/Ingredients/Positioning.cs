@@ -20,6 +20,13 @@ public class Positioning : MonoBehaviour
 
     bool breaded;
 
+    float posSpeed;
+
+    private void Start()
+    {
+        posSpeed = 5;
+    }
+
     void Update()
     {
         if (!grab)
@@ -63,12 +70,12 @@ public class Positioning : MonoBehaviour
             }
             
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
     }
 
@@ -83,12 +90,12 @@ public class Positioning : MonoBehaviour
                 Breadable(hit, 0, .0044f);
 
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
     }
     void CheckCabbagePosition()
@@ -102,12 +109,12 @@ public class Positioning : MonoBehaviour
                 Breadable(hit, .0005f, .0005f);
 
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
     }
     void CheckTomatoPosition()
@@ -121,12 +128,12 @@ public class Positioning : MonoBehaviour
                 Breadable(hit, .0013f, .0013f);
 
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
     }
 
@@ -141,12 +148,12 @@ public class Positioning : MonoBehaviour
                 Breadable(hit, .011f, 0);
 
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
         else
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, 2f * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
     }
 
@@ -164,7 +171,11 @@ public class Positioning : MonoBehaviour
     void Plateable(RaycastHit hit)
     {
         if (hit.collider.CompareTag("Plate"))
+        {
             lastPosition = hit.collider.gameObject.GetComponent<Positioner>().slot.transform;
+            CamManager.manager.SetAssembly();
+        }
+            
     }
     void Breadable(RaycastHit hit, float offset1, float offset2)
     {
