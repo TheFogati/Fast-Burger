@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3562422909744355354}
   - component: {fileID: 195803648}
   - component: {fileID: 195803647}
+  - component: {fileID: 7648162554170826973}
+  - component: {fileID: 126700801}
   m_Layer: 0
   m_Name: Bottom Bread
   m_TagString: Bread
@@ -32,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 3961757815512539759}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &195803648
 BoxCollider:
@@ -60,6 +62,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSlot: {fileID: 0}
+--- !u!114 &7648162554170826973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562422909744355353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f3a23374d66324b990696c5fdcd1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabType: 5
+  lastPosition: {fileID: 0}
+  grab: 0
+  hasMeat: 0
+--- !u!114 &126700801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562422909744355353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbd8ead88a51f44ba9447ef29cdf92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3562422910926570884
 PrefabInstance:
   m_ObjectHideFlags: 0

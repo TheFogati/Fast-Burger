@@ -24,15 +24,27 @@ public class Grabber : MonoBehaviour
                     selectedObject = hit.collider.gameObject;
                     selectedObject.GetComponent<Positioning>().grab = true;
 
-                    if (selectedObject.GetComponent<Positioning>().ingredientType == Positioning.Ingredient.Patty)
+                    if (selectedObject.GetComponent<Positioning>().GrabType == Positioning.Grabbable.Patty)
                         selectedObject.GetComponent<PattyScript>().cooking = false;
+                    if (selectedObject.GetComponent<Positioning>().GrabType == Positioning.Grabbable.SodaCup)
+                    {
+                        selectedObject.GetComponent<SodaScript>().filling = false;
+                        if(selectedObject.GetComponentInParent<SodaFountainScript>())
+                            selectedObject.GetComponentInParent<SodaFountainScript>().StopFill();
+                    }
+                    if (selectedObject.GetComponent<Positioning>().GrabType == Positioning.Grabbable.Fries)
+                        selectedObject.GetComponent<FriesScript>().frying = false;
+                        
                 }
             }
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            selectedObject.GetComponent<Positioning>().grab = false;
-            selectedObject = null;
+            if(selectedObject != null)
+            {
+                selectedObject.GetComponent<Positioning>().grab = false;
+                selectedObject = null;
+            }
         }
 
         if(selectedObject != null)

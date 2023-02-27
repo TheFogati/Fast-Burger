@@ -16,7 +16,7 @@ public class CamManager : MonoBehaviour
     {
         manager = this;
 
-        SetCooking();
+        SetServing();
     }
 
     public void SetCooking()

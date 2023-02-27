@@ -32,7 +32,7 @@ public class PattyScript : MonoBehaviour
     {
         if (cooking)
         {
-            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, .1f, .1f), Mathf.Lerp(cookingBar.transform.localScale.y, .1f, .1f), Mathf.Lerp(cookingBar.transform.localScale.z, .1f, .1f));
+            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, .15f, .1f), Mathf.Lerp(cookingBar.transform.localScale.y, .15f, .1f), Mathf.Lerp(cookingBar.transform.localScale.z, .15f, .1f));
 
             if (sideOneCooking)
                 SideOne();

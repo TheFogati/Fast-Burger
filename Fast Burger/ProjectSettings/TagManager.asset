@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Draggable
   - Grill
+  - Burger Point
+  - Plate
+  - Bread
+  - FillPerki
+  - FillRanpa
+  - FillCoolKoala
   layers:
   - Default
   - TransparentFX
