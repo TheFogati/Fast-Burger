@@ -41,8 +41,8 @@ public class NewOrder : MonoBehaviour
         lettuceQtd = Random.Range(0, 3);
         cheeseQtd = Random.Range(1, 3);
         tomatoQtd = Random.Range(0, 3);
-        //pickleQtd = Random.Range(0, 3);
-        //onionQtd = Random.Range(0, 3);
+        pickleQtd = Random.Range(0, 3);
+        onionQtd = Random.Range(0, 3);
 
         int rndFries = Random.Range(0, 2);
         if (rndFries == 0)

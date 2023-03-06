@@ -848,7 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f3a23374d66324b990696c5fdcd1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrabType: 7
+  GrabType: 9
   lastPosition: {fileID: 0}
   grab: 0
   hasMeat: 0

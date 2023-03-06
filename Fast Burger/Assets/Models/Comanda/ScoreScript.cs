@@ -36,7 +36,7 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         print("Patty Side Up = " + pattySide1 + "; Patty Side Down = " + pattySide2);
-        print("Cheese = " + cheeseQtd + "; Lettuce = " + lettuceQtd + "; Tomato = " + tomatoQtd + "; Onion = " + onionQtd + "; Pickle = " + pickleQtd);
+        print("Cheese = " + cheeseQtd + "; Lettuce = " + lettuceQtd + "; Tomato = " + tomatoQtd + "; Pickle = " + pickleQtd + "; Onion = " + onionQtd);
         if (hasFries) { print("Fries frieness = " + friesFrieness); } else { print("No Fries"); }
         print("Cup size = " + cupSize + "; Brand = " + sodaBrand + "; Filling = " + sodaFilling);
         
@@ -66,8 +66,8 @@ public class ScoreScript : MonoBehaviour
             0 - Cheese
             1 - Lettuce
             2 - Tomato
-            3 - Onion
-            4 - Pickle
+            3 - Pickle
+            4 - Onion
         */
 
         switch(ingredientId)
@@ -82,10 +82,10 @@ public class ScoreScript : MonoBehaviour
                 tomatoQtd++;
                 break;
             case 3:
-                onionQtd++;
+                pickleQtd++;
                 break;
             case 4:
-                pickleQtd++;
+                onionQtd++;
                 break;
         }
     }

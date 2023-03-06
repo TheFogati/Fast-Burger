@@ -10,6 +10,8 @@ public class Positioning : MonoBehaviour
         Cheese,
         Cabbage,
         Tomato,
+        Pickle,
+        Onion,
         TopBread,
         BottomBread,
         SodaCup,
@@ -26,7 +28,7 @@ public class Positioning : MonoBehaviour
 
     float posSpeed;
 
-    [Range(0,2)]public int sodaSize;
+    [Range(0, 2)] public int sodaSize;
     int sodaBrand = -1;
 
     private void Start()
@@ -38,7 +40,7 @@ public class Positioning : MonoBehaviour
     {
         if (!grab)
         {
-            switch(GrabType)
+            switch (GrabType)
             {
                 case Grabbable.Patty:
                     CheckPattyPosition();
@@ -51,6 +53,12 @@ public class Positioning : MonoBehaviour
                     break;
                 case Grabbable.Tomato:
                     CheckTomatoPosition();
+                    break;
+                case Grabbable.Pickle:
+                    CheckPicklePosition();
+                    break;
+                case Grabbable.Onion:
+                    CheckOnionPosition();
                     break;
                 case Grabbable.TopBread:
                     CheckTopBreadPosition();
@@ -67,24 +75,24 @@ public class Positioning : MonoBehaviour
             }
         }
 
-        if(breaded)
+        if (breaded)
             gameObject.GetComponent<Collider>().enabled = false;
     }
 
     void CheckPattyPosition()
     {
-        if(!breaded)
+        if (!breaded)
         {
             RaycastHit hit;
             bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
 
-            if(hitit)
+            if (hitit)
             {
                 Grillable(hit);
                 Plateable(hit);
                 Breadable(hit, .0055f, .0055f, -1);
             }
-            
+
             Vector3 velocity = Vector3.zero;
             transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
         }
@@ -97,12 +105,12 @@ public class Positioning : MonoBehaviour
 
     void CheckCheesePosition()
     {
-        if(!breaded)
+        if (!breaded)
         {
             RaycastHit hit;
             bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
 
-            if(hitit)
+            if (hitit)
                 Breadable(hit, 0, .0044f, 0);
 
             Vector3 velocity = Vector3.zero;
@@ -121,7 +129,7 @@ public class Positioning : MonoBehaviour
             RaycastHit hit;
             bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
 
-            if(hitit)
+            if (hitit)
                 Breadable(hit, .0005f, .0005f, 1);
 
             Vector3 velocity = Vector3.zero;
@@ -140,8 +148,48 @@ public class Positioning : MonoBehaviour
             RaycastHit hit;
             bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
 
-            if(hitit)
+            if (hitit)
                 Breadable(hit, .0013f, .0013f, 2);
+
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
+    }
+
+    void CheckPicklePosition()
+    {
+        if (!breaded)
+        {
+            RaycastHit hit;
+            bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
+
+            if (hitit)
+                Breadable(hit, .0025f, .0025f, 3);
+
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
+    }
+
+    void CheckOnionPosition()
+    {
+        if (!breaded)
+        {
+            RaycastHit hit;
+            bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
+
+            if (hitit)
+                Breadable(hit, .0025f, .0025f, 4);
 
             Vector3 velocity = Vector3.zero;
             transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);

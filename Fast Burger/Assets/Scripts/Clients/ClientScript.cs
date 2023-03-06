@@ -73,7 +73,7 @@ public class ClientScript : MonoBehaviour
     {
         agent.SetDestination(orderPoint.position);
 
-        if(Vector3.Distance(transform.position, orderPoint.position) <= 0.05f)
+        if(Vector3.Distance(transform.position, orderPoint.position) <= 0.1f)
         {
             behaviour = Behaviour.Think;
         }
