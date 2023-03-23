@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 374772734526790480}
   - component: {fileID: 374772734526790487}
   m_Layer: 0
-  m_Name: '[PH] Fry Box'
+  m_Name: Fry Box
   m_TagString: FryBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

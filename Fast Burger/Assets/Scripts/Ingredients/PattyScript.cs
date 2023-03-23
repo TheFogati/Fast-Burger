@@ -23,7 +23,7 @@ public class PattyScript : MonoBehaviour
     int pontoOne;
     int pontoTwo;
 
-    float slowDown = .2f;
+    float slowDown = .5f;
 
     Vector2 startTouch;
     Vector2 endTouch;
@@ -32,7 +32,7 @@ public class PattyScript : MonoBehaviour
     {
         if (cooking)
         {
-            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, .15f, .1f), Mathf.Lerp(cookingBar.transform.localScale.y, .15f, .1f), Mathf.Lerp(cookingBar.transform.localScale.z, .15f, .1f));
+            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, .15f, .5f), Mathf.Lerp(cookingBar.transform.localScale.y, .15f, .5f), Mathf.Lerp(cookingBar.transform.localScale.z, .15f, .5f));
 
             if (sideOneCooking)
                 SideOne();
@@ -43,7 +43,7 @@ public class PattyScript : MonoBehaviour
         }
         else
         {
-            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, 0f, .1f), Mathf.Lerp(cookingBar.transform.localScale.y, 0f, .1f), Mathf.Lerp(cookingBar.transform.localScale.z, 0f, .1f));
+            cookingBar.transform.localScale = new Vector3(Mathf.Lerp(cookingBar.transform.localScale.x, 0f, .5f), Mathf.Lerp(cookingBar.transform.localScale.y, 0f, .5f), Mathf.Lerp(cookingBar.transform.localScale.z, 0f, .5f));
         }
 
         upSide.value = upSideValue;
@@ -52,7 +52,7 @@ public class PattyScript : MonoBehaviour
 
     void SideOne()
     {
-        rend.gameObject.transform.rotation = Quaternion.Slerp(rend.gameObject.transform.rotation, Quaternion.Euler(90, 0, 0), .1f);
+        rend.gameObject.transform.rotation = Quaternion.Slerp(rend.gameObject.transform.rotation, Quaternion.Euler(90, 0, 0), .5f);
 
         if (sideOneTimer < 1)
             sideOneTimer += Time.deltaTime * slowDown;
@@ -80,12 +80,15 @@ public class PattyScript : MonoBehaviour
                 break;
         }
 
-        upSideValue += Time.deltaTime * slowDown;
+        if (upSideValue < 3)
+            upSideValue += Time.deltaTime * slowDown;
+        else
+            upSideValue = 3;
     }
 
     void SideTwo()
     {
-        rend.gameObject.transform.rotation = Quaternion.Slerp(rend.gameObject.transform.rotation, Quaternion.Euler(-90, 0, 0f), .1f);
+        rend.gameObject.transform.rotation = Quaternion.Slerp(rend.gameObject.transform.rotation, Quaternion.Euler(-90, 0, 0f), .5f);
 
         if (sideTwoTimer < 1)
             sideTwoTimer += Time.deltaTime * slowDown;
@@ -113,7 +116,10 @@ public class PattyScript : MonoBehaviour
                 break;
         }
 
-        downSideValue += Time.deltaTime * slowDown;
+        if(downSideValue < 3)
+            downSideValue += Time.deltaTime * slowDown;
+        else
+            downSideValue = 3;
     }
 
     void Flip()

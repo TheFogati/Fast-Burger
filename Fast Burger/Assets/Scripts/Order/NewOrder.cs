@@ -33,7 +33,7 @@ public class NewOrder : MonoBehaviour
     Vector3 newOrder = new Vector3(300, 460, 0);
     Vector3 discart = new Vector3(-630, 460, 0);
 
-    bool done;
+    public bool done;
     public bool prepare;
 
     void Start()
@@ -63,14 +63,13 @@ public class NewOrder : MonoBehaviour
 
         Vector3 velocity = Vector3.zero;
         if(!done)
-            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, newOrder, ref velocity, 5 * Time.deltaTime);
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, newOrder, ref velocity, Time.deltaTime);
         else
-            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, discart, ref velocity, 5 * Time.deltaTime);
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, discart, ref velocity, Time.deltaTime);
 
         if (Vector3.Distance(transform.position, discart) <= .5f)
         {
             Destroy(gameObject);
-            ScoreScript.ResetAll();
         }
             
     }

@@ -33,7 +33,7 @@ public class SodaScript : MonoBehaviour
     {
         if (filling)
         {
-            fillingBar.transform.localScale = new Vector3(Mathf.Lerp(fillingBar.transform.localScale.x, .7f, .1f), Mathf.Lerp(fillingBar.transform.localScale.y, .7f, .1f), Mathf.Lerp(fillingBar.transform.localScale.z, .7f, .1f));
+            fillingBar.transform.localScale = new Vector3(Mathf.Lerp(fillingBar.transform.localScale.x, .7f, .5f), Mathf.Lerp(fillingBar.transform.localScale.y, .7f, .5f), Mathf.Lerp(fillingBar.transform.localScale.z, .7f, .5f));
 
             fill += (Time.deltaTime * .3f);
             liquid.material.SetFloat("_Filling", fill);
@@ -51,7 +51,7 @@ public class SodaScript : MonoBehaviour
         }
         else
         {
-            fillingBar.transform.localScale = new Vector3(Mathf.Lerp(fillingBar.transform.localScale.x, 0f, .1f), Mathf.Lerp(fillingBar.transform.localScale.y, 0f, .1f), Mathf.Lerp(fillingBar.transform.localScale.z, 0f, .1f));
+            fillingBar.transform.localScale = new Vector3(Mathf.Lerp(fillingBar.transform.localScale.x, 0f, .5f), Mathf.Lerp(fillingBar.transform.localScale.y, 0f, .5f), Mathf.Lerp(fillingBar.transform.localScale.z, 0f, .5f));
 
             particle.enableEmission = false;
 

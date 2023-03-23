@@ -7,13 +7,13 @@ public class OrderManager : MonoBehaviour
     public ClientSpawner clientSpawner;
     public SpawnComanda comandaSpawner;
     int clientsNum;
-    bool servingClient;
-    bool comandaSpawned;
+    public bool servingClient;
+    public bool comandaSpawned;
     bool clientJudge;
 
     void Start()
     {
-        clientsNum = Random.Range(4, 7);
+        clientsNum = Random.Range(1000, 2000); // 4-7
     }
 
     void Update()
@@ -40,14 +40,7 @@ public class OrderManager : MonoBehaviour
                 }
                 if (comandaSpawner.order.prepare)
                 {
-                    clientJudge = clientSpawner.clientObject.GetComponent<ClientScript>().judging;
-
-                    if (clientJudge)
-                    {
-                        clientSpawner.clientObject.GetComponent<ClientScript>().behaviour = ClientScript.Behaviour.Judge;
-                    }
-                    else
-                        clientSpawner.clientObject.GetComponent<ClientScript>().behaviour = ClientScript.Behaviour.Wait;
+                    clientSpawner.clientObject.GetComponent<ClientScript>().behaviour = ClientScript.Behaviour.Wait;
                 }
             }
         }

@@ -33,7 +33,7 @@ public class Positioning : MonoBehaviour
 
     private void Start()
     {
-        posSpeed = 5;
+        posSpeed = 2;
     }
 
     void Update()
@@ -228,13 +228,21 @@ public class Positioning : MonoBehaviour
 
     void CheckSodaCupPosition()
     {
-        RaycastHit hit;
-        bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
+        if(!breaded)
+        {
+            RaycastHit hit;
+            bool hitit = Physics.Raycast(transform.position, Vector3.down, out hit);
 
-        Fillable(hit);
+            Fillable(hit);
 
-        Vector3 velocity = Vector3.zero;
-        transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, lastPosition.position, ref velocity, posSpeed * Time.deltaTime);
+        }
     }
     void CheckFriesPosition()
     {
@@ -389,14 +397,21 @@ public class Positioning : MonoBehaviour
                     CamManager.manager.SetServing();
                 }
 
-                lastPosition = hit.collider.gameObject.GetComponent<Positioner>().slot.transform;
+                Transform sodaPoint = GameObject.FindGameObjectWithTag("Soda Point").transform;
+
+                lastPosition = sodaPoint;
 
                 ScoreScript.SodaFill(GetComponent<SodaScript>().fill, sodaSize, sodaBrand);
-                FindObjectOfType<ClientScript>().judging = true;
+
+
+                FindObjectOfType<NewOrder>().prepare = false;
+                FindObjectOfType<ClientScript>().behaviour = ClientScript.Behaviour.Judge;
 
                 transform.SetParent(lastPosition);
 
                 breaded = true;
+
+                FindObjectOfType<ScoreScript>().checkOrder = true;
             }
         }
     }

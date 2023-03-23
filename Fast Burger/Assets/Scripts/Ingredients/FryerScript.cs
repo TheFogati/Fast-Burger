@@ -48,9 +48,9 @@ public class FryerScript : MonoBehaviour
 
 
         if(basketUp)
-            basket.transform.localPosition = Vector3.SmoothDamp(basket.transform.localPosition, new Vector3(0, -.0115f, .017f), ref velocity, 5 * Time.deltaTime);
+            basket.transform.localPosition = Vector3.SmoothDamp(basket.transform.localPosition, new Vector3(0, -.0115f, .017f), ref velocity, 2 * Time.deltaTime);
         else
-            basket.transform.localPosition = Vector3.SmoothDamp(basket.transform.localPosition, new Vector3(0, -.0115f, .008f), ref velocity, 5 * Time.deltaTime);
+            basket.transform.localPosition = Vector3.SmoothDamp(basket.transform.localPosition, new Vector3(0, -.0115f, .008f), ref velocity, 2 * Time.deltaTime);
 
     }
 

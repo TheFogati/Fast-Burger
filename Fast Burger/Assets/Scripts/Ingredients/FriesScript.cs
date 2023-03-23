@@ -31,18 +31,18 @@ public class FriesScript : MonoBehaviour
     {
         if(frying)
         {
-            fryingBar.transform.localScale = new Vector3(Mathf.Lerp(fryingBar.transform.localScale.x, .15f, .1f), Mathf.Lerp(fryingBar.transform.localScale.y, .15f, .1f), Mathf.Lerp(fryingBar.transform.localScale.z, .15f, .1f));
+            fryingBar.transform.localScale = new Vector3(Mathf.Lerp(fryingBar.transform.localScale.x, .15f, .5f), Mathf.Lerp(fryingBar.transform.localScale.y, .15f, .5f), Mathf.Lerp(fryingBar.transform.localScale.z, .15f, .5f));
 
-            friesTransform.localRotation = Quaternion.Slerp(friesTransform.localRotation, Quaternion.Euler(0, 0, 0), .1f);
+            friesTransform.localRotation = Quaternion.Slerp(friesTransform.localRotation, Quaternion.Euler(0, 0, 0), .5f);
 
             if(isFrying)
                 Frying();
         }
         else
         {
-            fryingBar.transform.localScale = new Vector3(Mathf.Lerp(fryingBar.transform.localScale.x, 0f, .1f), Mathf.Lerp(fryingBar.transform.localScale.y, 0f, .1f), Mathf.Lerp(fryingBar.transform.localScale.z, 0f, .1f));
+            fryingBar.transform.localScale = new Vector3(Mathf.Lerp(fryingBar.transform.localScale.x, 0f, .5f), Mathf.Lerp(fryingBar.transform.localScale.y, 0f, .5f), Mathf.Lerp(fryingBar.transform.localScale.z, 0f, .5f));
 
-            friesTransform.localRotation = Quaternion.Slerp(friesTransform.localRotation, Quaternion.Euler(90, 0, 0), .1f);
+            friesTransform.localRotation = Quaternion.Slerp(friesTransform.localRotation, Quaternion.Euler(90, 0, 0), .5f);
         }
             
         slider.value = fryingValue;
@@ -70,6 +70,9 @@ public class FriesScript : MonoBehaviour
                 break;
         }
 
-        fryingValue += Time.deltaTime * slowDown;
+        if (fryingValue < 2)
+            fryingValue += Time.deltaTime * slowDown;
+        else
+            fryingValue = 2;
     }
 }

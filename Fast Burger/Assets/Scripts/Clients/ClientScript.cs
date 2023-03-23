@@ -30,6 +30,7 @@ public class ClientScript : MonoBehaviour
     public Texture[] expressions;
     public int satisfaction;
 
+    bool once;
     void Start()
     {
         behaviour = Behaviour.Order;
@@ -84,7 +85,7 @@ public class ClientScript : MonoBehaviour
         thinking = true;
         anim.SetBool("Think", true);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((lookPoint.position - transform.position)), .05f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((lookPoint.position - transform.position)), .5f);
     }
 
     void Wait()
@@ -104,6 +105,8 @@ public class ClientScript : MonoBehaviour
 
     void React()
     {
+        print("Reacting");
+
         anim.SetBool("Judge", false);
         anim.SetBool("React", true);
         anim.SetInteger("Satisfaction", satisfaction);
@@ -114,8 +117,22 @@ public class ClientScript : MonoBehaviour
     {
         agent.SetDestination(exitPoint.position);
 
+        if(!once)
+        {
+            if (satisfaction >= 3)
+                FindObjectOfType<TrayPositioning>().position = 1;
+            else
+                FindObjectOfType<TrayPositioning>().position = 2;
+
+            once = true;
+        }
+
         if (Vector3.Distance(transform.position, exitPoint.position) <= 1f)
         {
+            FindObjectOfType<OrderManager>().servingClient = false;
+            FindObjectOfType<OrderManager>().comandaSpawned = false;
+            FindObjectOfType<TraySpawner>().hasFresh = false;
+
             Destroy(gameObject);
         }
     }

@@ -24,9 +24,13 @@ public class ScoreScript : MonoBehaviour
     static int cupSize;
     static int sodaBrand;
 
+    float score;
 
     NewOrder order;
-    static bool checkOrder;
+    public bool checkOrder;
+    [Space]
+    public IngredientSpawner burgerSpawn;
+    public IngredientSpawner friesSpawn;
 
     void Start()
     {
@@ -35,17 +39,19 @@ public class ScoreScript : MonoBehaviour
 
     void Update()
     {
+        /*
         print("Patty Side Up = " + pattySide1 + "; Patty Side Down = " + pattySide2);
         print("Cheese = " + cheeseQtd + "; Lettuce = " + lettuceQtd + "; Tomato = " + tomatoQtd + "; Pickle = " + pickleQtd + "; Onion = " + onionQtd);
         if (hasFries) { print("Fries frieness = " + friesFrieness); } else { print("No Fries"); }
         print("Cup size = " + cupSize + "; Brand = " + sodaBrand + "; Filling = " + sodaFilling);
-        
+        */
 
         if(order)
         {
             if (checkOrder)
             {
-                //Check Order
+                checkOrder = false;
+                StartCoroutine(CheckOrder());
             }
         }
         else
@@ -106,11 +112,9 @@ public class ScoreScript : MonoBehaviour
         sodaFilling = filling;
         cupSize = size;
         sodaBrand = brand;
-
-        checkOrder = true;
     }
 
-    public static void ResetAll()
+    void ResetAll()
     {
         pattySide1 = 0;
         pattySide2 = 0;
@@ -127,5 +131,113 @@ public class ScoreScript : MonoBehaviour
         sodaFilling = 0;
         cupSize = 0;
         sodaBrand = 0;
+
+        score = 0;
     }
+
+    IEnumerator CheckOrder()
+    {
+        score += CalculatePatty(pattySide1);
+        score += CalculatePatty(pattySide2);
+        score += CalculateFries(friesFrieness);
+        score += CalculateSoda(sodaFilling);
+        score += CalculateIngredients();
+
+        print("total = " + score);
+
+        yield return new WaitForSeconds(3);
+
+        ClientScript client = FindObjectOfType<ClientScript>();
+        print(client.name);
+
+        if (score >= 0 && score <= 20)
+            client.satisfaction = 1; //Very Angry
+        else if (score > 20 && score <= 40)
+            client.satisfaction = 2; //Angry
+        else if (score > 40 && score <= 60)
+            client.satisfaction = 3; //Neutral
+        else if (score > 60 && score <= 80)
+            client.satisfaction = 4; //Happy
+        else if (score > 80 && score <= 100)
+            client.satisfaction = 5; //Very Happy
+
+        
+        client.judging = false;
+        client.behaviour = ClientScript.Behaviour.React;
+
+        burgerSpawn.hasFresh = false;
+        friesSpawn.hasFresh = false;
+
+        ResetAll();
+
+        print("Checked");
+    }
+
+    float CalculatePatty(float sideScore)
+    {
+        float result;
+
+        if (sideScore <= 2)
+            result = 35 * sideScore / 2;
+        else
+            result = ((35 * sideScore / 3) - 35) / -.33333f;
+
+        return result;
+    }
+
+    float CalculateFries(float frieness)
+    {
+        float result;
+
+        if (frieness <= 1)
+            result = 20 * frieness;
+        else
+            result = ((20 * frieness / 2) - 20) / -.5f;
+
+
+        if (hasFries)
+            return result;
+        else
+            return 20;
+    }
+
+    float CalculateSoda(float fillness)
+    {
+        float result = 0;
+
+        if(fillness <= .8f)
+            result = 3 * fillness/ .8f;
+        else
+            result = (3 * fillness - 3)/ -.2f;
+
+        NewOrder order = FindObjectOfType<NewOrder>();
+
+        if (cupSize == order.sodaSize)
+            result++;
+        if (sodaBrand == order.sodaType)
+            result++;
+
+        return result;
+    }
+
+    float CalculateIngredients()
+    {
+        NewOrder order = FindObjectOfType<NewOrder>();
+        int finalCalculation = 0;
+
+        if (cheeseQtd == order.cheeseQtd)
+            finalCalculation++;
+        if (lettuceQtd == order.lettuceQtd)
+            finalCalculation++;
+        if (tomatoQtd == order.tomatoQtd)
+            finalCalculation++;
+        if (pickleQtd == order.pickleQtd)
+            finalCalculation++;
+        if (onionQtd == order.onionQtd)
+            finalCalculation++;
+
+        return finalCalculation;
+    }
+
+
 }

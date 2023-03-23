@@ -24,16 +24,16 @@ public class SodaLid : MonoBehaviour
 
         if (!soda.filling)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, closedPos.position, ref velocity, 5 * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, closedPos.position, ref velocity, 2 * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, closedPos.transform.rotation, .1f);
         }
         else
         {
-            transform.position = Vector3.SmoothDamp(transform.position, openPos.position, ref velocity, 5 * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, openPos.position, ref velocity, 2 * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, openPos.transform.rotation, .1f);
         }
 
         if(closed)
-            straw.transform.localPosition = Vector3.SmoothDamp(straw.transform.localPosition, new Vector3(0, 0, -.012f), ref velocity, 5 * Time.deltaTime);
+            straw.transform.localPosition = Vector3.SmoothDamp(straw.transform.localPosition, new Vector3(0, 0, -.012f), ref velocity, 2 * Time.deltaTime);
     }
 }

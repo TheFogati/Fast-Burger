@@ -52,7 +52,11 @@ public class Grabber : MonoBehaviour
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             Vector3 velocity = Vector3.zero;
-            selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, new Vector3(worldPosition.x, grabHeight, worldPosition.z), ref velocity, 2.5f * Time.deltaTime);
+
+            if(selectedObject.GetComponent<Positioning>().GrabType == Positioning.Grabbable.SodaCup)
+                selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, new Vector3(worldPosition.x, grabHeight - .1f, worldPosition.z), ref velocity, Time.deltaTime);
+            else
+                selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, new Vector3(worldPosition.x, grabHeight, worldPosition.z), ref velocity, Time.deltaTime);
         }
     }
 
