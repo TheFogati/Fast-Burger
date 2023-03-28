@@ -3838,6 +3838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tabua
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8848f9dbcc64dfb4daf9213a0718ce06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8848f9dbcc64dfb4daf9213a0718ce06, type: 3}
@@ -3858,7 +3862,7 @@ GameObject:
   - component: {fileID: 1035183108}
   - component: {fileID: 1035183107}
   - component: {fileID: 1035183106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3957,7 +3961,7 @@ GameObject:
   - component: {fileID: 1046677415}
   - component: {fileID: 1046677414}
   - component: {fileID: 1046677413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: '[PH] Plate'
   m_TagString: Plate
   m_Icon: {fileID: 0}
@@ -4172,6 +4176,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 268802179b749484785d912874ede126, type: 3}
       propertyPath: m_Name
       value: fritadeira_Cima
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 268802179b749484785d912874ede126, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 268802179b749484785d912874ede126, type: 3}
       propertyPath: m_TagString
@@ -4827,6 +4835,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fa54717ae27d7dd4187914f87bd4499c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: fa54717ae27d7dd4187914f87bd4499c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: fa54717ae27d7dd4187914f87bd4499c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8469,6 +8481,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1261914955}
     m_Modifications:
+    - target: {fileID: 1501330691, guid: 1d7b7eefc02420c4498ba94385335717, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784082742, guid: 1d7b7eefc02420c4498ba94385335717, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987648686, guid: 1d7b7eefc02420c4498ba94385335717, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 883312398084288443, guid: 1d7b7eefc02420c4498ba94385335717, type: 3}
       propertyPath: largeSodaPoint
       value: 
@@ -8787,6 +8811,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1261914955}
     m_Modifications:
+    - target: {fileID: 5036959175170085795, guid: 638e7464a10a0964eaf9823a1c137d02, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5271382546731678018, guid: 638e7464a10a0964eaf9823a1c137d02, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -8834,6 +8862,10 @@ PrefabInstance:
     - target: {fileID: 5271382546731678020, guid: 638e7464a10a0964eaf9823a1c137d02, type: 3}
       propertyPath: m_Name
       value: Fryer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271382546731678020, guid: 638e7464a10a0964eaf9823a1c137d02, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6838192524466057846, guid: 638e7464a10a0964eaf9823a1c137d02, type: 3}
       propertyPath: m_Materials.Array.data[0]
