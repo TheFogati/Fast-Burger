@@ -23,6 +23,9 @@ public class CamManager : MonoBehaviour
     {
         TurnAllOff();
         cookingCam.SetActive(true);
+
+        if (FindObjectOfType<Tutorial>())
+            FindObjectOfType<Tutorial>().DragBurger(true);
     }
     public void SetAssembly()
     {
@@ -39,6 +42,9 @@ public class CamManager : MonoBehaviour
     {
         TurnAllOff();
         fillingCam.SetActive(true);
+
+        if (FindObjectOfType<Tutorial>())
+            FindObjectOfType<Tutorial>().EndTutorial();
     }
     public void SetServing()
     {

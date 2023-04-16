@@ -30,6 +30,9 @@ public class FryerScript : MonoBehaviour
                     if (!hit.collider.CompareTag("Fryer Handle"))
                         return;
 
+                    if (FindObjectOfType<Tutorial>())
+                        FindObjectOfType<Tutorial>().FriePotato(false);
+
                     if (GetComponentInChildren<FriesScript>())
                     {
                         basketUp = false;

@@ -124,7 +124,8 @@ public class PattyScript : MonoBehaviour
 
     void Flip()
     {
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             startTouch = Input.GetTouch(0).position;
 
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -133,11 +134,20 @@ public class PattyScript : MonoBehaviour
 
             if(endTouch.y > startTouch.y)
                 sideOneCooking = !sideOneCooking;
+
+            if (FindObjectOfType<Tutorial>())
+                FindObjectOfType<Tutorial>().FlipBurger(false);
         }
 
         //PC Testing
         if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (FindObjectOfType<Tutorial>())
+                FindObjectOfType<Tutorial>().FlipBurger(false);
+
             sideOneCooking = !sideOneCooking;
+        }
+            
 
     }
 }

@@ -31,6 +31,9 @@ public class Positioning : MonoBehaviour
     [Range(0, 2)] public int sodaSize;
     int sodaBrand = -1;
 
+
+    bool burgtutonce;
+    bool frietutonce;
     private void Start()
     {
         posSpeed = 2;
@@ -259,6 +262,12 @@ public class Positioning : MonoBehaviour
     {
         if (hit.collider.CompareTag("Grill"))
         {
+            if (FindObjectOfType<Tutorial>() && !burgtutonce)
+            {
+                burgtutonce = true;
+                FindObjectOfType<Tutorial>().FlipBurger(true);
+            }
+
             lastPosition = hit.collider.gameObject.GetComponent<Positioner>().slot.transform;
             transform.GetComponent<PattyScript>().cooking = true;
         }
@@ -419,6 +428,13 @@ public class Positioning : MonoBehaviour
     {
         if(hit.collider.CompareTag("Fryer"))
         {
+            if (FindObjectOfType<Tutorial>() && !frietutonce)
+            {
+                frietutonce = true;
+                FindObjectOfType<Tutorial>().FriePotato(true);
+            }
+                
+
             lastPosition = hit.collider.gameObject.GetComponent<Positioner>().slot.transform;
             transform.GetComponent<FriesScript>().frying = true;
             transform.SetParent(hit.collider.transform);

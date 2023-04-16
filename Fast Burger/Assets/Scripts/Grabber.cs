@@ -21,6 +21,9 @@ public class Grabber : MonoBehaviour
                     if (!hit.collider.CompareTag("Draggable"))
                         return;
 
+                    if (FindObjectOfType<Tutorial>())
+                        FindObjectOfType<Tutorial>().DragBurger(false);
+
                     selectedObject = hit.collider.gameObject;
                     selectedObject.GetComponent<Positioning>().grab = true;
 
