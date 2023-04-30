@@ -41,6 +41,8 @@ public class ClientScript : MonoBehaviour
         orderPoint = GameObject.Find("Client Point").transform;
         lookPoint = GameObject.Find("Client Look").transform;
         exitPoint = GameObject.Find("Client Despawn").transform;
+
+        
     }
 
     void Update()
@@ -119,6 +121,8 @@ public class ClientScript : MonoBehaviour
 
         if(!once)
         {
+            GameManager.manager.adsCounter++;
+
             if (satisfaction >= 3)
                 FindObjectOfType<TrayPositioning>().position = 1;
             else
@@ -133,6 +137,7 @@ public class ClientScript : MonoBehaviour
             FindObjectOfType<OrderManager>().comandaSpawned = false;
             FindObjectOfType<TraySpawner>().hasFresh = false;
 
+            
             Destroy(gameObject);
         }
     }

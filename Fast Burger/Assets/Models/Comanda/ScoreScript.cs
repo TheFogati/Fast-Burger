@@ -166,7 +166,9 @@ public class ScoreScript : MonoBehaviour
         client.behaviour = ClientScript.Behaviour.React;
 
         burgerSpawn.hasFresh = false;
-        friesSpawn.hasFresh = false;
+
+        if(hasFries)
+            friesSpawn.hasFresh = false;
 
         ResetAll();
 

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    public int adsCounter = 0;
 
     #region Don't Destroy
     public static GameManager manager;
