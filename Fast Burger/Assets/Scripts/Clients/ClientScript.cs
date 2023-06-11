@@ -15,7 +15,7 @@ public class ClientScript : MonoBehaviour
         GetOut,
     }
     public Behaviour behaviour;
-
+    //BurgaçoGiga
     Animator anim;
     NavMeshAgent agent;
 
@@ -27,10 +27,15 @@ public class ClientScript : MonoBehaviour
     public bool judging;
     [Space]
     public Renderer face;
+    public AudioSource sound;
+    [Space]
     public Texture[] expressions;
+    public AudioClip[] sfx;
+    [Space]
     public int satisfaction;
 
     bool once;
+    bool onceSound;
     void Start()
     {
         behaviour = Behaviour.Order;
@@ -113,6 +118,14 @@ public class ClientScript : MonoBehaviour
         anim.SetBool("React", true);
         anim.SetInteger("Satisfaction", satisfaction);
         face.material.mainTexture = expressions[satisfaction];
+
+        if(!onceSound)
+        {
+            sound.clip = sfx[satisfaction - 1];
+            sound.Play();
+
+            onceSound = true;
+        }
     }
 
     void GetOut()
